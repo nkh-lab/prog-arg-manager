@@ -1,0 +1,22 @@
+@startuml
+start
+:Arguments;
+if (Сontains generic option?) then (yes)
+    if () then (help)
+        :Show help text;
+        stop
+    else (version)
+        :Show version text;
+        stop
+    endif
+else (no)
+    if (All mandatory options provided) then (yes)
+        #lightgreen:User's entry point\n*gets and handles options\n*user's business logic;
+    else (no)
+        :Show help text;
+endif
+
+
+
+stop
+@enduml
