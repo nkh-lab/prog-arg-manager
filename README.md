@@ -1,7 +1,11 @@
 Utility library for simplifying using of `Boost::program_options` where user can concentrate not on options/arguments configuration but on usage of them.
 
+## Build Status
+[![CI](https://github.com/nkh-lab/prog-arg-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/nkh-lab/prog-arg-manager/actions/workflows/ci.yml)
+
 ## Dependencies
 * [Boost::program_options](https://github.com/boostorg/program_options)
+* [GTest (for unit tests build only)](https://github.com/google/googletest)
 
 ## How it works
 
