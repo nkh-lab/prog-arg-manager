@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-and-run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Depedencies
+      run: |
+        sudo apt-get install libgtest-dev libboost-all-dev
+
+    - uses: actions/checkout@v1
+
+    - name: Build
+      run: |
+        mkdir build && cd build
+        cmake -DCMAKE_BUILD_TYPE=Debug -Dprog-arg-manager_BUILD_TESTS=on -Dprog-arg-manager_BUILD_UNITTESTS=on ..
+        make
+
+    - name: Run Unit Test
+      run: |
+        cd build/test/unit_test
+        ./prog-arg-manager-utest
+
+    - name: Run Component Test
+      run: |
+        cd build/test/component_test
+        ./prog-arg-manager-ctest --num 789 -rw -p /path/to/my/dir file1.txt file2.txt file3.txt
