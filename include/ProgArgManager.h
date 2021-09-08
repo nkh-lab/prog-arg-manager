@@ -57,7 +57,7 @@ public:
 class ProgArgManager
 {
 public:
-    ProgArgManager(int argc, char** argv, std::string version = {});
+    ProgArgManager(int argc, char** argv, std::string version = {}, std::ostream& output = std::cout);
 
     template <class T, class... Ts>
     bool parce(T& first, Ts&... rest)
@@ -176,6 +176,7 @@ private:
     int m_argc;
     char** m_argv;
     std::string m_version;
+    std::ostream& m_output;
     bpo::options_description m_all_options;
     bpo::options_description m_optional_options;
     bpo::options_description m_mandatory_options;

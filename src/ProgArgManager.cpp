@@ -2,10 +2,11 @@
 
 namespace nlab {
 
-ProgArgManager::ProgArgManager(int argc, char** argv, std::string version)
+ProgArgManager::ProgArgManager(int argc, char** argv, std::string version, std::ostream& output)
     : m_argc{argc}
     , m_argv{argv}
     , m_version{version}
+    , m_output{output}
     , m_all_options{"Allowed options"}
     , m_optional_options{"Optional"}
     , m_mandatory_options{"Mandatory (last option name can be omitted)"}
@@ -37,12 +38,12 @@ void ProgArgManager::retriveValues(bool& check_mandatory)
 
 void ProgArgManager::printHelp()
 {
-    std::cout << m_all_options << "\n";
+    m_output << m_all_options << "\n";
 }
 
 void ProgArgManager::printVersion()
 {
-    std::cout << m_version << "\n";
+    m_output << m_version << "\n";
 }
 
 std::string ProgArgManager::getName(const std::string& name_and_symbol)

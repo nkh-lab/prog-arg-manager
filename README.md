@@ -28,7 +28,7 @@ $ cmake -Dprog-arg-manager_BUILD_TESTS=on ..
 $ make
 ```
 
-Executable binary `prog-arg-manager-test` is here:
+Executable binary `prog-arg-manager-ctest` is here:
 ```
 $ cd build/test/component_test
 ```
@@ -37,7 +37,7 @@ $ cd build/test/component_test
 
 Run example without all mandatory options or with "-h [ --help ]", help text should be shown:
 ```
-$ ./prog-arg-manager-test -h
+$ ./prog-arg-manager-ctest -h
 Allowed options:
 
 Generic:
@@ -57,13 +57,13 @@ Mandatory (last option name can be omitted):
 
 Run example with "-v [ --version ]" to show version:
 ```
-$ ./prog-arg-manager-test -v
+$ ./prog-arg-manager-ctest -v
 1.0.0
 ```
 
 Run example with all mandatory options:
 ```
-$ ./prog-arg-manager-test --num 789 -rw -p /path/to/my/dir file1.txt file2.txt file3.txt
+$ ./prog-arg-manager-ctest --num 789 -rw -p /path/to/my/dir file1.txt file2.txt file3.txt
 num:   789
 read:  1
 write: 1
