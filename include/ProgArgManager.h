@@ -60,7 +60,7 @@ public:
     ProgArgManager(int argc, char** argv, std::string version = {}, std::ostream& output = std::cout);
 
     template <class T, class... Ts>
-    bool parce(T& first, Ts&... rest)
+    bool parse(T& first, Ts&... rest)
     {
         bool ret = false;
 

@@ -75,7 +75,7 @@ TEST_F(ExampleOptionsTest, ParceHelpWithVersion)
 
     ProgArgManager pam(argc, argv, "1.0.0", output);
 
-    EXPECT_FALSE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_FALSE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), m_help_with_version);
 }
@@ -89,7 +89,7 @@ TEST_F(ExampleOptionsTest, ParceHWithVersion)
 
     ProgArgManager pam(argc, argv, "1.0.0", output);
 
-    EXPECT_FALSE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_FALSE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), m_help_with_version);
 }
@@ -103,7 +103,7 @@ TEST_F(ExampleOptionsTest, ParceHelpWoVersion)
 
     ProgArgManager pam(argc, argv, {}, output);
 
-    EXPECT_FALSE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_FALSE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), m_help_wo_version);
 }
@@ -117,7 +117,7 @@ TEST_F(ExampleOptionsTest, ParceHWoVersion)
 
     ProgArgManager pam(argc, argv, {}, output);
 
-    EXPECT_FALSE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_FALSE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), m_help_wo_version);
 }
@@ -131,7 +131,7 @@ TEST_F(ExampleOptionsTest, ParceVersion)
 
     ProgArgManager pam(argc, argv, "1.0.0", output);
 
-    EXPECT_FALSE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_FALSE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), "1.0.0\n");
 }
@@ -145,7 +145,7 @@ TEST_F(ExampleOptionsTest, ParceV)
 
     ProgArgManager pam(argc, argv, "1.0.0", output);
 
-    EXPECT_FALSE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_FALSE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), "1.0.0\n");
 }
@@ -159,7 +159,7 @@ TEST_F(ExampleOptionsTest, OnlyAllMandatory)
 
     ProgArgManager pam(argc, argv, "1.0.0", output);
 
-    EXPECT_TRUE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_TRUE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), "");
 
@@ -186,7 +186,7 @@ TEST_F(ExampleOptionsTest, NotAllMandatory)
 
     ProgArgManager pam(argc, argv, "1.0.0", output);
 
-    EXPECT_FALSE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_FALSE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), m_help_with_version);
 }
@@ -201,7 +201,7 @@ TEST_F(ExampleOptionsTest, ReadmeTest)
 
     ProgArgManager pam(argc, argv, "1.0.0", output);
 
-    EXPECT_TRUE(pam.parce(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
+    EXPECT_TRUE(pam.parse(m_opt_num, m_opt_read, m_opt_write, m_opt_del, m_opt_path, m_opt_files));
 
     EXPECT_STREQ(output.str().c_str(), "");
 

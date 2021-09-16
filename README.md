@@ -1,5 +1,23 @@
 Utility library for simplifying using of `Boost::program_options` where user can concentrate not on options/arguments configuration but on usage of them.
 
+So, just describe the options and use them after parsing the arguments:
+```cpp
+int main(int argc, char* argv[])
+{
+    nlab::Option<bool> write{"write,w", "write flag"};
+    nlab::Option<std::string> file{"file,f", "file path and name"};
+
+    if (nlab::ProgArgManager(argc, argv).parse(write, file))
+    {
+        //Enter point for user business logic
+        std::cout << "write: " << write.value << "\n";
+        std::cout << "file: " << file.value << "\n";
+    }
+
+    return 1;
+}
+```
+
 ## Build Status
 [![CI](https://github.com/nkh-lab/prog-arg-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/nkh-lab/prog-arg-manager/actions/workflows/ci.yml)
 

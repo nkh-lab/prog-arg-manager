@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
     // ProgArgManager pam(argc, argv); // without version support
     ProgArgManager pam(argc, argv, "1.0.0");
 
-    if (pam.parce(num, read, write, del, path, files))
+    if (pam.parse(num, read, write, del, path, files))
     {
         // Here is the user's entry point where he can handle parced arguments and insert business logic.
         // Parce returns true when no generic (help and version) options were provided
