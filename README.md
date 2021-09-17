@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 
     if (nlab::ProgArgManager(argc, argv).parse(write, file))
     {
-        //Enter point for user business logic
+        // Entry point for user business logic
         std::cout << "write: " << write.value << "\n";
         std::cout << "file: " << file.value << "\n";
     }

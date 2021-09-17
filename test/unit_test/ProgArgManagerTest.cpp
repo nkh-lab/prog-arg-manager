@@ -4,10 +4,10 @@
 
 using namespace nlab;
 
-template <typename T>
-constexpr size_t argv_size()
+template <typename T, size_t N>
+constexpr size_t arraySize(T (&)[N])
 {
-    return (sizeof(T) / sizeof(char*));
+    return N;
 }
 
 class ExampleOptionsTest : public ::testing::Test
@@ -69,7 +69,7 @@ protected:
 TEST_F(ExampleOptionsTest, ParceHelpWithVersion)
 {
     char* argv[] = {"", "--help"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -83,7 +83,7 @@ TEST_F(ExampleOptionsTest, ParceHelpWithVersion)
 TEST_F(ExampleOptionsTest, ParceHWithVersion)
 {
     char* argv[] = {"", "-h"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -97,7 +97,7 @@ TEST_F(ExampleOptionsTest, ParceHWithVersion)
 TEST_F(ExampleOptionsTest, ParceHelpWoVersion)
 {
     char* argv[] = {"", "--help"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -111,7 +111,7 @@ TEST_F(ExampleOptionsTest, ParceHelpWoVersion)
 TEST_F(ExampleOptionsTest, ParceHWoVersion)
 {
     char* argv[] = {"", "-h"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -125,7 +125,7 @@ TEST_F(ExampleOptionsTest, ParceHWoVersion)
 TEST_F(ExampleOptionsTest, ParceVersion)
 {
     char* argv[] = {"", "--version"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -139,7 +139,7 @@ TEST_F(ExampleOptionsTest, ParceVersion)
 TEST_F(ExampleOptionsTest, ParceV)
 {
     char* argv[] = {"", "-v"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -153,7 +153,7 @@ TEST_F(ExampleOptionsTest, ParceV)
 TEST_F(ExampleOptionsTest, OnlyAllMandatory)
 {
     char* argv[] = {"", "-p", "/path/to/my/dir", "file1.txt", "file2.txt", "file3.txt"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -180,7 +180,7 @@ TEST_F(ExampleOptionsTest, OnlyAllMandatory)
 TEST_F(ExampleOptionsTest, NotAllMandatory)
 {
     char* argv[] = {"", "file1.txt", "file2.txt", "file3.txt"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
@@ -195,7 +195,7 @@ TEST_F(ExampleOptionsTest, ReadmeTest)
 {
     char* argv[] = {
         "", "--num", "789", "-rw", "-p", "/path/to/my/dir", "file1.txt", "file2.txt", "file3.txt"};
-    int argc = argv_size<decltype(argv)>();
+    int argc = arraySize(argv);
 
     std::stringstream output;
 
